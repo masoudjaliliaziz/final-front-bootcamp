@@ -1,7 +1,12 @@
+"use server";
+import "server-only";
 import { RegisterFormSchema, RegisterFormState } from "@/lib/validation";
-import { error } from "console";
+import { createSession } from "@/lib/session";
+import { redirect } from "next/navigation";
+const BASE_URL = "http://localhost:8000";
 
 export async function register(state: RegisterFormState, formData: FormData) {
+  console.log(BASE_URL);
   //validate input
   const validationFields = RegisterFormSchema.safeParse(
     Object.fromEntries(formData.entries())
@@ -13,7 +18,7 @@ export async function register(state: RegisterFormState, formData: FormData) {
     };
   }
   try {
-    const res = await fetch("http://localhost:8000/auth/admin/register", {
+    const res = await fetch(`${BASE_URL}/auth/admin/register`, {
       method: "post",
       body: JSON.stringify(validationFields.data),
       headers: {
@@ -24,7 +29,11 @@ export async function register(state: RegisterFormState, formData: FormData) {
     if (!res.ok) {
       return { message: data.message, errors: data.errors };
     } else {
-      return data;
+      await createSession({
+        accessToken: data.tokens.accessToken,
+        refreshToken: data.tokens.refreshToken,
+      });
+      redirect("/dashboard");
     }
   } catch (err) {
     console.error(err.message);

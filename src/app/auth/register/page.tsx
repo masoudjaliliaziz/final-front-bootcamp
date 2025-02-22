@@ -10,12 +10,9 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 
-type Props = {};
-
-function Register({}: Props) {
+function Register() {
   return (
     <Box>
-      <Logo />
       <Card sx={{ width: 500 }} elevation={8}>
         <CardContent sx={{ padding: 4 }}>
           <Stack

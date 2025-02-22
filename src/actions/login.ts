@@ -1,14 +1,14 @@
 "use server";
 import "server-only";
-import { RegisterFormSchema, RegisterFormState } from "@/lib/validation";
+import { LoginFormSchema, LoginFormState } from "@/lib/validation";
 import { createSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 const BASE_URL = "http://localhost:8000";
 
-export async function register(state: RegisterFormState, formData: FormData) {
+export async function login(state: LoginFormState, formData: FormData) {
   console.log(BASE_URL);
   //validate input
-  const validationFields = RegisterFormSchema.safeParse(
+  const validationFields = LoginFormSchema.safeParse(
     Object.fromEntries(formData.entries())
   );
   // If any form fields are invalid, return early
@@ -18,7 +18,7 @@ export async function register(state: RegisterFormState, formData: FormData) {
     };
   }
 
-  const res = await fetch(`${BASE_URL}/auth/admin/register`, {
+  const res = await fetch(`${BASE_URL}/auth/login`, {
     method: "post",
     body: JSON.stringify(validationFields.data),
     headers: {

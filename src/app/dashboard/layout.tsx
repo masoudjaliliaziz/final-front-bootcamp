@@ -1,9 +1,15 @@
+import ToggleDriverProvider from "./context/ToggleDriverContext";
+import FullLayout from "./FullLayout";
 function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div>{children}</div>;
+  return (
+    <ToggleDriverProvider>
+      <FullLayout>{children}</FullLayout>
+    </ToggleDriverProvider>
+  );
 }
 
 export default DashboardLayout;

@@ -2,9 +2,9 @@ import React from "react";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
-import { AppBar } from "./components/AppBar";
+import { AppBar } from "../../components/dashboard-layout/AppBar";
 import IconButton from "@mui/material/IconButton";
-import { useDrawer } from "./context/ToggleDriverContext";
+import { useDrawer } from "../../components/dashboard-layout/context/ToggleDriverContext";
 
 function DashboardAppBar() {
   const { open, openOpen } = useDrawer();

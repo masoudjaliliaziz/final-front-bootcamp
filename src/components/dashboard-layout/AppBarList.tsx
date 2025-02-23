@@ -7,7 +7,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import List from "@mui/material/List";
 import { useDrawer } from "./context/ToggleDriverContext";
-import { ListItems } from "./components/contants";
+import { ListItems } from "./contants";
 import Link from "next/link";
 function AppBarList() {
   const { open } = useDrawer();

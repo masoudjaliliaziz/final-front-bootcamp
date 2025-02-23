@@ -1,5 +1,5 @@
-import ToggleDriverProvider from "./context/ToggleDriverContext";
-import FullLayout from "./FullLayout";
+import ToggleDriverProvider from "../../components/dashboard-layout/context/ToggleDriverContext";
+import FullLayout from "../../components/dashboard-layout/FullLayout";
 function DashboardLayout({
   children,
 }: Readonly<{
